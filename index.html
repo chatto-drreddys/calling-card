@@ -174,6 +174,17 @@
 
   .statement p { margin-bottom: 16px; }
   .statement p:last-child { margin-bottom: 0; }
+  .statement strong,
+  .summary-line strong {
+    color: var(--purple);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.82em;
+    letter-spacing: 0.5px;
+  }
+  .statement em,
+  .summary-line em {
+    font-style: italic;
+  }
 
   .summary-line {
     margin: 6px 36px 22px;
@@ -229,16 +240,6 @@
     opacity: 0.96;
   }
 
-  .footer {
-    text-align: center;
-    padding-bottom: 30px;
-    font-size: 0.78rem;
-    color: var(--purple);
-    letter-spacing: 1px;
-    position: relative;
-    z-index: 1;
-  }
-
   @media (max-width: 560px) {
     .content-shell { width: 100%; }
     .identity, .statement, .summary-line, .env-band { margin-left: 18px; margin-right: 18px; }
@@ -255,112 +256,232 @@
       font-size: 1.95rem;
     }
     .tree-bg {
-      left: -38px;
-      bottom: -12px;
-      width: min(220px, 44%);
-      height: 62%;
+      left: -26px;
+      bottom: -18px;
+      width: min(248px, 52%);
+      height: 68%;
     }
   }
 
-  /* Acorn to mighty oak watermark animation */
+  /* Chestnut to oak watermark animation */
   .tree-bg {
     position: absolute;
-    left: -76px;
-    bottom: -18px;
-    width: clamp(230px, 18vw, 320px);
-    height: 78%;
+    left: -42px;
+    bottom: -34px;
+    width: clamp(250px, 22vw, 360px);
+    height: 84%;
     z-index: 0;
     pointer-events: none;
     opacity: 0;
     color: var(--purple);
-    filter: drop-shadow(0 18px 36px rgba(109,79,196,0.16));
-    animation: tree-cycle 13s ease-in-out infinite;
+    filter: drop-shadow(0 18px 40px rgba(109,79,196,0.18));
+    animation: tree-cycle 14s ease-in-out infinite;
   }
 
-  /* graceful fade so the loop restart is never visible */
   @keyframes tree-cycle {
-    0%   { opacity: 0; }
-    12%  { opacity: 0.24; }
-    86%  { opacity: 0.24; }
-    100% { opacity: 0; }
+    0%, 100% { opacity: 0; }
+    9%, 88%  { opacity: 0.28; }
+    94%      { opacity: 0.08; }
   }
 
-  .tree-bg .trunk {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 11;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: grow-trunk 13s ease-in-out infinite;
-  }
-  @keyframes grow-trunk {
-    0%, 12% { stroke-dashoffset: 100; }
-    42%     { stroke-dashoffset: 0; }
-    100%    { stroke-dashoffset: 0; }
-  }
-
-  .tree-bg .canopy {
-    fill: currentColor;
-    transform-box: fill-box;
+  .tree-bg .ground {
+    fill: rgba(109,79,196,0.10);
     transform-origin: center;
-    transform: scale(0);
-    opacity: 0;
-    animation: grow-canopy 13s ease-in-out infinite;
+    animation: ground-breathe 14s ease-in-out infinite;
   }
-  @keyframes grow-canopy {
-    0%, 40%   { transform: scale(0);    opacity: 0; }
-    68%       { transform: scale(1.04); opacity: 1; }
-    78%, 100% { transform: scale(1);    opacity: 1; }
+
+  @keyframes ground-breathe {
+    0%, 14% { transform: scale(0.72); opacity: 0; }
+    26%, 88% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0; }
+  }
+
+  .tree-bg .oak-sway {
+    transform-origin: 78px 456px;
+    animation: oak-sway 14s ease-in-out infinite;
+  }
+
+  @keyframes oak-sway {
+    0%, 68% { transform: rotate(0deg); }
+    78% { transform: rotate(2.4deg); }
+    86% { transform: rotate(0.6deg); }
+    94% { transform: rotate(1.8deg); }
+    100% { transform: rotate(0deg); }
   }
 
   .tree-bg .acorn {
-    fill: currentColor;
     transform-box: fill-box;
     transform-origin: center bottom;
-    transform: scale(0);
-    opacity: 0;
-    animation: pop-acorn 13s ease-in-out infinite;
+    animation: acorn-ready 14s ease-in-out infinite;
   }
-  @keyframes pop-acorn {
-    0%      { transform: scale(0);   opacity: 0; }
-    8%      { transform: scale(1.1); opacity: 1; }
-    14%     { transform: scale(1);   opacity: 1; }
-    100%    { transform: scale(1);   opacity: 1; }
+
+  .tree-bg .acorn-cap,
+  .tree-bg .acorn-body,
+  .tree-bg .canopy {
+    fill: currentColor;
+  }
+
+  @keyframes acorn-ready {
+    0%   { transform: translateY(18px) scale(0); opacity: 0; }
+    8%   { transform: translateY(0) scale(1.06); opacity: 1; }
+    15%  { transform: translateY(0) scale(1); opacity: 1; }
+    22%  { transform: translateY(-2px) scale(0.98); opacity: 1; }
+    100% { transform: translateY(-2px) scale(0.98); opacity: 1; }
+  }
+
+  .tree-bg .sprout,
+  .tree-bg .trunk,
+  .tree-bg .branch {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .tree-bg .sprout {
+    stroke-width: 7;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: sprout-rise 14s ease-in-out infinite;
+  }
+
+  @keyframes sprout-rise {
+    0%, 14% { stroke-dashoffset: 100; opacity: 0; }
+    28% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+
+  .tree-bg .trunk {
+    stroke-width: 11;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: grow-trunk 14s cubic-bezier(0.25, 0.75, 0.25, 1) infinite;
+  }
+
+  @keyframes grow-trunk {
+    0%, 22% { stroke-dashoffset: 100; }
+    52% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  .tree-bg .branch {
+    stroke-width: 8;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+
+  .tree-bg .branch-low {
+    animation: grow-branch-low 14s ease-in-out infinite;
+  }
+
+  .tree-bg .branch-high {
+    animation: grow-branch-high 14s ease-in-out infinite;
+  }
+
+  @keyframes grow-branch-low {
+    0%, 40% { stroke-dashoffset: 100; opacity: 0; }
+    62% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+
+  @keyframes grow-branch-high {
+    0%, 48% { stroke-dashoffset: 100; opacity: 0; }
+    70% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+
+  .tree-bg .canopy {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .tree-bg .canopy-back {
+    opacity: 0;
+    transform: scale(0.18);
+    animation: bloom-back 14s ease-in-out infinite;
+  }
+
+  .tree-bg .canopy-front {
+    opacity: 0;
+    transform: scale(0.12);
+    animation: bloom-front 14s ease-in-out infinite;
+  }
+
+  @keyframes bloom-back {
+    0%, 52% { transform: scale(0.18); opacity: 0; }
+    74% { transform: scale(1.06); opacity: 0.95; }
+    86%, 100% { transform: scale(1); opacity: 0.95; }
+  }
+
+  @keyframes bloom-front {
+    0%, 58% { transform: scale(0.12); opacity: 0; }
+    78% { transform: scale(1.08); opacity: 1; }
+    88%, 100% { transform: scale(1); opacity: 1; }
+  }
+
+  .tree-bg .leaf-flare {
+    fill: var(--gold-soft);
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: leaf-flare 14s ease-in-out infinite;
+  }
+
+  @keyframes leaf-flare {
+    0%, 66% { opacity: 0; transform: scale(0.2); }
+    76% { opacity: 0.85; transform: scale(1.15); }
+    88% { opacity: 0.35; transform: scale(0.92); }
+    100% { opacity: 0.35; transform: scale(0.92); }
   }
 
   /* respect users who prefer no motion: show the grown oak, static */
   @media (prefers-reduced-motion: reduce) {
     .card { transition: none; }
-    .tree-bg { animation: none; opacity: 0.18; }
-    .tree-bg .trunk  { animation: none; stroke-dashoffset: 0; }
-    .tree-bg .canopy { animation: none; transform: scale(1); opacity: 1; }
-    .tree-bg .acorn  { animation: none; transform: scale(1); opacity: 1; }
+    .tree-bg { animation: none; opacity: 0.28; }
+    .tree-bg .ground { animation: none; transform: scale(1); opacity: 1; }
+    .tree-bg .oak-sway { animation: none; transform: none; }
+    .tree-bg .acorn { animation: none; transform: translateY(-2px) scale(0.98); opacity: 1; }
+    .tree-bg .sprout,
+    .tree-bg .trunk,
+    .tree-bg .branch { animation: none; stroke-dashoffset: 0; opacity: 1; }
+    .tree-bg .canopy-back,
+    .tree-bg .canopy-front { animation: none; transform: scale(1); opacity: 1; }
+    .tree-bg .leaf-flare { animation: none; opacity: 0.35; transform: scale(0.92); }
   }
 </style>
 </head>
 <body>
   <main class="card">
-    <svg class="tree-bg" viewBox="90 0 310 500" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
-      <!-- chestnut / acorn at the base -->
-      <g class="acorn">
-        <path d="M186 452 q14 -11 28 0 q-2 6 -14 6 q-12 0 -14 -6 z"/>
-        <ellipse cx="200" cy="468" rx="11" ry="14"/>
-      </g>
-      <!-- trunk + branches draw upward -->
-      <path class="trunk" pathLength="100"
-        d="M200 458 C198 408 196 366 199 322 C201 288 207 258 203 224
-           M203 252 C183 240 166 233 150 222
-           M201 274 C223 261 243 257 257 244"/>
-      <!-- mighty oak canopy unfurls -->
-      <g class="canopy">
-        <circle cx="200" cy="150" r="72"/>
-        <circle cx="150" cy="168" r="50"/>
-        <circle cx="250" cy="168" r="50"/>
-        <circle cx="168" cy="116" r="44"/>
-        <circle cx="232" cy="116" r="44"/>
-        <circle cx="200" cy="104" r="42"/>
+    <svg class="tree-bg" viewBox="0 0 420 520" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
+      <ellipse class="ground" cx="112" cy="476" rx="86" ry="22"/>
+      <g class="oak-sway">
+        <g class="acorn">
+          <path class="acorn-cap" d="M55 432 q21 -17 44 0 q-3 11 -22 11 q-19 0 -22 -11 z"/>
+          <ellipse class="acorn-body" cx="77" cy="456" rx="18" ry="24"/>
+        </g>
+        <path class="sprout" pathLength="100" d="M79 432 C89 417 100 404 113 389"/>
+        <path class="trunk" pathLength="100" d="M112 388 C150 360 188 330 226 286 C264 242 300 204 334 166"/>
+        <path class="branch branch-low" pathLength="100" d="M208 304 C242 296 274 280 306 248"/>
+        <path class="branch branch-high" pathLength="100" d="M258 236 C290 222 322 194 350 156"/>
+        <g class="canopy canopy-back">
+          <ellipse cx="314" cy="152" rx="54" ry="46"/>
+          <ellipse cx="280" cy="178" rx="44" ry="38"/>
+          <ellipse cx="348" cy="182" rx="40" ry="34"/>
+        </g>
+        <g class="canopy canopy-front">
+          <circle cx="332" cy="134" r="52"/>
+          <circle cx="286" cy="126" r="44"/>
+          <circle cx="360" cy="154" r="40"/>
+          <circle cx="318" cy="194" r="40"/>
+          <circle cx="370" cy="194" r="30"/>
+        </g>
+        <g class="leaf-flare">
+          <circle cx="286" cy="96" r="7"/>
+          <circle cx="334" cy="90" r="8"/>
+          <circle cx="390" cy="150" r="6"/>
+          <circle cx="272" cy="204" r="6"/>
+          <circle cx="358" cy="224" r="7"/>
+        </g>
       </g>
     </svg>
     <div class="content-shell">
@@ -381,15 +502,15 @@
 
       <section class="statement">
         <p>
-          I do my best work when I can shape the environment around a team &mdash; bringing together entrepreneurial energy, systems thinking, and a deep curiosity about how people and organizations work.
+          I most want to design the systems, culture, and operating structures that help capable people become high-performing teams and help bold ideas grow into durable engines of impact.
         </p>
         <p>
-          The work I most want to do is design the systems, culture, and operating structures that help capable individuals become high-performing teams and help bold ideas grow into durable engines of impact.
+          That work fits me because it draws on my <strong><em>Gift</em></strong> for shaping environments, my <strong><em>Passion</em></strong> for entrepreneurship and understanding how people and systems work, and my <strong><em>Values</em></strong> of ownership, analytical rigor, bold ambition, and collaborative trust.
         </p>
       </section>
 
       <section class="summary-line">
-        <p>Shaping environments, building ventures, and creating the conditions for ownership-led growth.</p>
+        <p><strong><em>Gift</em></strong>, <strong><em>Passion</em></strong>, and <strong><em>Values</em></strong> aligned toward ownership-led growth.</p>
       </section>
 
       <section class="env-band">
@@ -402,8 +523,6 @@
           I'm energized by environments that pair ambition with rigor: places where ownership matters, curiosity is valued, and thoughtful analysis turns bold ideas into practical momentum.
         </p>
       </section>
-
-      <div class="footer">LEADERSHIP EXCELLENCE FOR ASSOCIATE DEVELOPMENT</div>
     </div>
   </main>
   <script>
