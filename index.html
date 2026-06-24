@@ -281,16 +281,7 @@
   }
 
   .tree-bg .oak-sway {
-    transform-origin: 78px 456px;
-    animation: oak-sway 14s ease-in-out infinite;
-  }
-
-  @keyframes oak-sway {
-    0%, 68% { transform: rotate(0deg); }
-    78% { transform: rotate(2.4deg); }
-    86% { transform: rotate(0.6deg); }
-    94% { transform: rotate(1.8deg); }
-    100% { transform: rotate(0deg); }
+    transform-origin: 112px 456px;
   }
 
   .tree-bg .acorn {
@@ -423,7 +414,6 @@
     .card { transition: none; }
     .tree-bg { animation: none; opacity: 0.28; }
     .tree-bg .ground { animation: none; transform: scale(1); opacity: 1; }
-    .tree-bg .oak-sway { animation: none; transform: none; }
     .tree-bg .acorn { animation: none; transform: translateY(-2px) scale(0.98); opacity: 1; }
     .tree-bg .sprout,
     .tree-bg .trunk,
@@ -443,28 +433,28 @@
           <path class="acorn-cap" d="M55 432 q21 -17 44 0 q-3 11 -22 11 q-19 0 -22 -11 z"/>
           <ellipse class="acorn-body" cx="77" cy="456" rx="18" ry="24"/>
         </g>
-        <path class="sprout" pathLength="100" d="M79 432 C89 417 100 404 113 389"/>
-        <path class="trunk" pathLength="100" d="M112 388 C150 360 188 330 226 286 C264 242 300 204 334 166"/>
-        <path class="branch branch-low" pathLength="100" d="M208 304 C242 296 274 280 306 248"/>
-        <path class="branch branch-high" pathLength="100" d="M258 236 C290 222 322 194 350 156"/>
+        <path class="sprout" pathLength="100" d="M79 432 C86 418 93 405 99 392"/>
+        <path class="trunk" pathLength="100" d="M100 392 C103 356 107 320 111 284 C115 242 120 200 126 162"/>
+        <path class="branch branch-low" pathLength="100" d="M112 296 C96 274 78 252 58 232"/>
+        <path class="branch branch-high" pathLength="100" d="M120 236 C146 218 172 194 196 162"/>
         <g class="canopy canopy-back">
-          <ellipse cx="314" cy="152" rx="54" ry="46"/>
-          <ellipse cx="280" cy="178" rx="44" ry="38"/>
-          <ellipse cx="348" cy="182" rx="40" ry="34"/>
+          <ellipse cx="154" cy="150" rx="54" ry="46"/>
+          <ellipse cx="116" cy="178" rx="44" ry="38"/>
+          <ellipse cx="192" cy="182" rx="40" ry="34"/>
         </g>
         <g class="canopy canopy-front">
-          <circle cx="332" cy="134" r="52"/>
-          <circle cx="286" cy="126" r="44"/>
-          <circle cx="360" cy="154" r="40"/>
-          <circle cx="318" cy="194" r="40"/>
-          <circle cx="370" cy="194" r="30"/>
+          <circle cx="172" cy="134" r="52"/>
+          <circle cx="126" cy="126" r="44"/>
+          <circle cx="200" cy="154" r="40"/>
+          <circle cx="158" cy="194" r="40"/>
+          <circle cx="212" cy="194" r="30"/>
         </g>
         <g class="leaf-flare">
-          <circle cx="286" cy="96" r="7"/>
-          <circle cx="334" cy="90" r="8"/>
-          <circle cx="390" cy="150" r="6"/>
-          <circle cx="272" cy="204" r="6"/>
-          <circle cx="358" cy="224" r="7"/>
+          <circle cx="124" cy="96" r="7"/>
+          <circle cx="174" cy="92" r="8"/>
+          <circle cx="226" cy="150" r="6"/>
+          <circle cx="110" cy="204" r="6"/>
+          <circle cx="194" cy="224" r="7"/>
         </g>
       </g>
     </svg>
