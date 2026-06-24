@@ -249,6 +249,7 @@
 
   /* Chestnut to oak watermark animation */
   .tree-bg {
+    --tree-stroke: 8;
     position: absolute;
     left: -42px;
     bottom: -34px;
@@ -304,7 +305,6 @@
     100% { transform: translateY(-2px) scale(0.98); opacity: 1; }
   }
 
-  .tree-bg .sprout,
   .tree-bg .trunk,
   .tree-bg .branch {
     fill: none;
@@ -313,34 +313,21 @@
     stroke-linejoin: round;
   }
 
-  .tree-bg .sprout {
-    stroke-width: 7;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: sprout-rise 14s ease-in-out infinite;
-  }
-
-  @keyframes sprout-rise {
-    0%, 14% { stroke-dashoffset: 100; opacity: 0; }
-    28% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 1; }
-  }
-
   .tree-bg .trunk {
-    stroke-width: 11;
+    stroke-width: var(--tree-stroke);
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
     animation: grow-trunk 14s cubic-bezier(0.25, 0.75, 0.25, 1) infinite;
   }
 
   @keyframes grow-trunk {
-    0%, 22% { stroke-dashoffset: 100; }
-    52% { stroke-dashoffset: 0; }
+    0%, 16% { stroke-dashoffset: 100; opacity: 0; }
+    56% { stroke-dashoffset: 0; opacity: 1; }
     100% { stroke-dashoffset: 0; }
   }
 
   .tree-bg .branch {
-    stroke-width: 8;
+    stroke-width: var(--tree-stroke);
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
   }
@@ -354,14 +341,14 @@
   }
 
   @keyframes grow-branch-low {
-    0%, 40% { stroke-dashoffset: 100; opacity: 0; }
-    62% { stroke-dashoffset: 0; opacity: 1; }
+    0%, 22% { stroke-dashoffset: 100; opacity: 0; }
+    58% { stroke-dashoffset: 0; opacity: 1; }
     100% { stroke-dashoffset: 0; opacity: 1; }
   }
 
   @keyframes grow-branch-high {
-    0%, 48% { stroke-dashoffset: 100; opacity: 0; }
-    70% { stroke-dashoffset: 0; opacity: 1; }
+    0%, 24% { stroke-dashoffset: 100; opacity: 0; }
+    60% { stroke-dashoffset: 0; opacity: 1; }
     100% { stroke-dashoffset: 0; opacity: 1; }
   }
 
@@ -383,15 +370,15 @@
   }
 
   @keyframes bloom-back {
-    0%, 52% { transform: scale(0.18); opacity: 0; }
-    74% { transform: scale(1.06); opacity: 0.95; }
-    86%, 100% { transform: scale(1); opacity: 0.95; }
+    0%, 60% { transform: scale(0.18); opacity: 0; }
+    80% { transform: scale(1.06); opacity: 0.95; }
+    90%, 100% { transform: scale(1); opacity: 0.95; }
   }
 
   @keyframes bloom-front {
-    0%, 58% { transform: scale(0.12); opacity: 0; }
-    78% { transform: scale(1.08); opacity: 1; }
-    88%, 100% { transform: scale(1); opacity: 1; }
+    0%, 64% { transform: scale(0.12); opacity: 0; }
+    84% { transform: scale(1.08); opacity: 1; }
+    92%, 100% { transform: scale(1); opacity: 1; }
   }
 
   .tree-bg .leaf-flare {
@@ -415,7 +402,6 @@
     .tree-bg { animation: none; opacity: 0.28; }
     .tree-bg .ground { animation: none; transform: scale(1); opacity: 1; }
     .tree-bg .acorn { animation: none; transform: translateY(-2px) scale(0.98); opacity: 1; }
-    .tree-bg .sprout,
     .tree-bg .trunk,
     .tree-bg .branch { animation: none; stroke-dashoffset: 0; opacity: 1; }
     .tree-bg .canopy-back,
@@ -430,13 +416,11 @@
       <ellipse class="ground" cx="120" cy="476" rx="92" ry="22"/>
       <g class="oak-sway">
         <g class="acorn">
-          <path class="acorn-cap" d="M76 432 q18 -15 36 0 q-3 10 -18 10 q-15 0 -18 -10 z"/>
-          <ellipse class="acorn-body" cx="94" cy="454" rx="14" ry="22"/>
+          <path class="acorn-cap" d="M72 432 q22 -15 44 0 q-4 11 -22 11 q-18 0 -22 -11 z"/>
+          <ellipse class="acorn-body" cx="94" cy="454" rx="17" ry="21"/>
         </g>
-        <path class="sprout" pathLength="100" d="M95 432 C101 420 106 408 110 394"/>
-        <path class="trunk" pathLength="100" d="M110 394 C114 352 118 312 123 272 C128 230 134 194 142 156"/>
-        <path class="branch branch-low" pathLength="100" d="M122 292 C106 270 88 248 66 226"/>
-        <path class="branch branch-high" pathLength="100" d="M128 238 C151 220 173 200 194 170"/>
+        <path class="trunk" pathLength="100" d="M95 432 C101 392 108 352 116 310 C124 264 132 216 140 160"/>
+        <path class="branch branch-low" pathLength="100" d="M116 304 C101 284 85 264 66 242"/>
         <g class="canopy canopy-back">
           <ellipse cx="148" cy="150" rx="54" ry="46"/>
           <ellipse cx="112" cy="178" rx="44" ry="38"/>
@@ -449,6 +433,7 @@
           <circle cx="152" cy="194" r="40"/>
           <circle cx="206" cy="194" r="30"/>
         </g>
+        <path class="branch branch-high" pathLength="100" d="M125 256 C145 248 167 244 192 242"/>
         <g class="leaf-flare">
           <circle cx="120" cy="96" r="7"/>
           <circle cx="170" cy="92" r="8"/>
