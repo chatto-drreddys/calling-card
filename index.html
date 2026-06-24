@@ -28,29 +28,32 @@
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    background:
-      radial-gradient(circle at top left, rgba(139,111,232,0.34), transparent 32%),
-      radial-gradient(circle at bottom right, rgba(217,165,33,0.14), transparent 24%),
-      linear-gradient(135deg, #120d22 0%, #1a1430 44%, #2d2150 100%);
+    background: #ffffff;
     color: var(--ink);
-    min-height: 100vh;
+    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    overflow: hidden;
+    padding: clamp(12px, 2vh, 24px) clamp(12px, 2vw, 20px);
     line-height: 1.6;
   }
 
   .card {
+    --card-scale: 1;
     width: 100%;
     max-width: 820px;
     background:
-      linear-gradient(90deg, rgba(109,79,196,0.12) 0%, rgba(109,79,196,0.03) 28%, transparent 42%),
-      linear-gradient(160deg, var(--lavender-soft), var(--lavender));
+      linear-gradient(90deg, rgba(109,79,196,0.10) 0%, rgba(109,79,196,0.03) 28%, transparent 44%),
+      linear-gradient(160deg, #ffffff 0%, #fbf8ff 58%, #f0e9ff 100%);
     border-radius: 28px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.4) inset;
+    box-shadow: 0 24px 56px rgba(45,33,80,0.16), 0 0 0 1px rgba(109,79,196,0.08) inset;
     overflow: hidden;
     position: relative;
+    transform: scale(var(--card-scale));
+    transform-origin: center center;
+    transition: transform 180ms ease;
   }
 
   .card::before {
@@ -58,15 +61,15 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 10% 22%, rgba(109,79,196,0.18), transparent 28%),
-      radial-gradient(circle at 16% 86%, rgba(217,165,33,0.16), transparent 26%),
-      radial-gradient(circle at 92% 88%, rgba(109,79,196,0.10), transparent 40%);
+      radial-gradient(circle at 10% 22%, rgba(109,79,196,0.14), transparent 28%),
+      radial-gradient(circle at 16% 86%, rgba(217,165,33,0.13), transparent 26%),
+      radial-gradient(circle at 92% 88%, rgba(109,79,196,0.08), transparent 40%);
     pointer-events: none;
   }
 
   .header {
     text-align: center;
-    padding: 48px 40px 12px;
+    padding: 48px 40px 10px;
     position: relative;
     z-index: 1;
   }
@@ -78,60 +81,72 @@
     font-weight: 700;
     letter-spacing: 0.5px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.08);
+    line-height: 1.08;
   }
 
-  .subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(1.05rem, 2.6vw, 1.35rem);
-    color: var(--purple);
-    font-weight: 600;
-    margin-top: 6px;
+  .identity {
+    margin: 20px 36px 12px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background: rgba(255,255,255,0.86);
+    border: 1px solid rgba(109,79,196,0.16);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(109,79,196,0.12);
+    position: relative;
+    z-index: 1;
   }
 
   .photo-wrap {
     display: flex;
     justify-content: center;
-    margin: 24px auto 8px;
+    margin: 0;
     position: relative;
     z-index: 1;
   }
 
   .photo {
-    width: 116px;
-    height: 116px;
+    width: 104px;
+    height: 104px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 8px 24px rgba(45,33,80,0.25);
+    border: 5px solid #fff;
+    box-shadow: 0 12px 26px rgba(45,33,80,0.20);
     background: linear-gradient(135deg, var(--purple), var(--purple-bright));
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
     font-family: 'Cormorant Garamond', serif;
   }
 
+  .identity-copy {
+    text-align: left;
+  }
+
   .name {
-    text-align: center;
-    font-size: 1.15rem;
+    text-align: left;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--ink);
-    letter-spacing: 0.5px;
-    margin-top: 4px;
+    letter-spacing: 0.2px;
+    margin-top: 0;
     position: relative;
     z-index: 1;
   }
 
   .role {
-    text-align: center;
-    font-size: 0.85rem;
+    text-align: left;
+    font-size: 0.9rem;
     color: var(--purple);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-weight: 600;
     position: relative;
     z-index: 1;
   }
@@ -265,8 +280,19 @@
 
   @media (max-width: 560px) {
     .pillars { grid-template-columns: 1fr; }
-    .statement, .pillars, .env-band { margin-left: 18px; margin-right: 18px; }
-    .header { padding: 36px 24px 8px; }
+    .identity, .statement, .pillars, .env-band { margin-left: 18px; margin-right: 18px; }
+    .header { padding: 36px 24px 6px; }
+    .identity {
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px;
+    }
+    .identity-copy, .name, .role { text-align: center; }
+    .photo {
+      width: 92px;
+      height: 92px;
+      font-size: 1.95rem;
+    }
     .tree-bg {
       left: -58px;
       bottom: -12px;
@@ -275,7 +301,7 @@
     }
   }
 
-  /* ---- Acorn → Mighty Oak watermark animation ---- */
+  /* Acorn to mighty oak watermark animation */
   .tree-bg {
     position: absolute;
     left: -38px;
@@ -345,6 +371,7 @@
 
   /* respect users who prefer no motion: show the grown oak, static */
   @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
     .tree-bg { animation: none; opacity: 0.18; }
     .tree-bg .trunk  { animation: none; stroke-dashoffset: 0; }
     .tree-bg .canopy { animation: none; transform: scale(1); opacity: 1; }
@@ -377,15 +404,18 @@
     </svg>
     <div class="header">
       <h1>Work I'd Most Love to Do</h1>
-      <div class="subtitle">Calling: the alignment among your Gifts &middot; Passions &middot; Values</div>
     </div>
 
-    <div class="photo-wrap">
-      <!-- Replace the div below with: <img class="photo" src="me.jpg" alt="photo"> -->
-      <div class="photo">NC</div>
-    </div>
-    <div class="name">Neerugatti Chatterji</div>
-    <div class="role">Lead Data Science Engineer &middot; Strive</div>
+    <section class="identity">
+      <div class="photo-wrap">
+        <!-- Replace the div below with: <img class="photo" src="me.jpg" alt="photo"> -->
+        <div class="photo">NC</div>
+      </div>
+      <div class="identity-copy">
+        <div class="name">Neerugatti Chatterji</div>
+        <div class="role">Lead Data Science Engineer &middot; Straive</div>
+      </div>
+    </section>
 
     <section class="statement">
       <p>
@@ -428,5 +458,38 @@
 
     <div class="footer">LEADERSHIP EXCELLENCE FOR ASSOCIATE DEVELOPMENT</div>
   </main>
+  <script>
+    (function () {
+      const card = document.querySelector('.card');
+      if (!card) return;
+
+      function fitCardToViewport() {
+        card.style.setProperty('--card-scale', '1');
+
+        const styles = getComputedStyle(document.body);
+        const availableWidth = window.innerWidth
+          - parseFloat(styles.paddingLeft)
+          - parseFloat(styles.paddingRight);
+        const availableHeight = window.innerHeight
+          - parseFloat(styles.paddingTop)
+          - parseFloat(styles.paddingBottom);
+
+        const widthScale = availableWidth / card.offsetWidth;
+        const heightScale = availableHeight / card.offsetHeight;
+        const scale = Math.min(1, widthScale, heightScale);
+
+        card.style.setProperty('--card-scale', scale.toFixed(4));
+      }
+
+      const requestFit = () => requestAnimationFrame(fitCardToViewport);
+
+      requestFit();
+      window.addEventListener('resize', requestFit);
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(requestFit);
+      }
+    })();
+  </script>
 </body>
 </html>
