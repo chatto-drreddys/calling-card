@@ -174,30 +174,14 @@
 
   .statement p { margin-bottom: 16px; }
   .statement p:last-child { margin-bottom: 0; }
-  .statement strong,
-  .summary-line strong {
+  .statement strong {
     color: var(--purple);
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 0.82em;
     letter-spacing: 0.5px;
   }
-  .statement em,
-  .summary-line em {
+  .statement em {
     font-style: italic;
-  }
-
-  .summary-line {
-    margin: 6px 36px 22px;
-    padding: 10px 12px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-  .summary-line p {
-    font-size: 0.96rem;
-    font-weight: 600;
-    color: var(--purple);
-    letter-spacing: 0.4px;
   }
 
   .env-band {
@@ -242,7 +226,7 @@
 
   @media (max-width: 560px) {
     .content-shell { width: 100%; }
-    .identity, .statement, .summary-line, .env-band { margin-left: 18px; margin-right: 18px; }
+    .identity, .statement, .env-band { margin-left: 18px; margin-right: 18px; }
     .header { padding: 36px 24px 6px; }
     .identity {
       flex-direction: column;
@@ -508,11 +492,6 @@
           That work fits me because it draws on my <strong><em>Gift</em></strong> for shaping environments, my <strong><em>Passion</em></strong> for entrepreneurship and understanding how people and systems work, and my <strong><em>Values</em></strong> of ownership, analytical rigor, bold ambition, and collaborative trust.
         </p>
       </section>
-
-      <section class="summary-line">
-        <p><strong><em>Gift</em></strong>, <strong><em>Passion</em></strong>, and <strong><em>Values</em></strong> aligned toward ownership-led growth.</p>
-      </section>
-
       <section class="env-band">
         <h3>My Environments</h3>
         <div class="env-tags">
