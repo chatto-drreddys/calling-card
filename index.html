@@ -1,294 +1,221 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work I'd Most Love to Do — Calling Card</title>
+<title>Work I'd Most Love To Do - Calling Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-deep: #1a1430;
-    --bg-mid: #2d2150;
-    --lavender: #e9e3fb;
-    --lavender-soft: #f4f0ff;
-    --purple: #6d4fc4;
-    --purple-bright: #8b6fe8;
-    --gold: #d9a521;
-    --gold-soft: #f0c95a;
-    --ink: #2a2438;
-    --crimson: #b5202f;
-    --highlight: #fbe89a;
+    --bg: #05070b;
+    --bg-deep: #020306;
+    --panel: rgba(9, 15, 23, 0.76);
+    --panel-soft: rgba(10, 18, 28, 0.56);
+    --line: rgba(132, 170, 205, 0.24);
+    --line-bright: rgba(132, 170, 205, 0.44);
+    --ink: #f2f4ef;
+    --accent: #61d3f5;
+    --tree: #7ee4cf;
+    --tree-flares: #ffd27c;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-  html { scroll-behavior: smooth; }
+  html,
+  body {
+    min-height: 100%;
+  }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: #ffffff;
+    font-family: 'DM Sans', system-ui, sans-serif;
     color: var(--ink);
+    background:
+      radial-gradient(circle at 14% 12%, rgba(92, 178, 219, 0.18), transparent 38%),
+      radial-gradient(circle at 85% 88%, rgba(255, 193, 104, 0.13), transparent 34%),
+      linear-gradient(145deg, var(--bg-deep) 0%, #060a10 44%, #05070b 100%);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(2px 2px at 20% 26%, rgba(255, 255, 255, 0.25), transparent),
+      radial-gradient(1.5px 1.5px at 78% 20%, rgba(255, 255, 255, 0.26), transparent),
+      radial-gradient(2px 2px at 62% 74%, rgba(255, 255, 255, 0.22), transparent),
+      radial-gradient(1.2px 1.2px at 34% 64%, rgba(255, 255, 255, 0.2), transparent),
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: auto, auto, auto, auto, 80px 80px, 80px 80px;
+    background-position: center, center, center, center, center, center;
+    mix-blend-mode: screen;
+    opacity: 0.36;
+  }
+
+  .shell {
     min-height: 100dvh;
-    height: 100dvh;
+    width: min(1120px, 100% - 2rem);
+    margin-inline: auto;
+    padding: clamp(1rem, 2vw, 1.8rem) clamp(0.8rem, 2vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+  }
+
+  .top-title {
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: rgba(212, 225, 238, 0.72);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.7rem 0;
+    text-align: center;
+  }
+
+  .main-card {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: linear-gradient(165deg, var(--panel) 0%, var(--panel-soft) 100%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0 24px 60px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    min-height: clamp(560px, 74vh, 760px);
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: clamp(12px, 2vh, 24px) clamp(12px, 2vw, 20px);
-    line-height: 1.6;
-  }
-
-  .card {
-    --card-scale: 1;
+    padding: clamp(1rem, 2.1vw, 2rem) clamp(0.9rem, 2.3vw, 2.1rem) clamp(6.8rem, 12vw, 8.4rem);
     width: 100%;
-    max-width: none;
-    background:
-      linear-gradient(90deg, rgba(109,79,196,0.10) 0, rgba(109,79,196,0.03) 240px, transparent 420px),
-      linear-gradient(160deg, #ffffff 0%, #fbf8ff 58%, #f0e9ff 100%);
-    border-radius: 28px;
-    box-shadow: 0 24px 56px rgba(45,33,80,0.16), 0 0 0 1px rgba(109,79,196,0.08) inset;
-    overflow: hidden;
-    position: relative;
-    transform: scale(var(--card-scale));
-    transform-origin: center center;
-    transition: transform 180ms ease;
   }
 
-  .content-shell {
-    width: min(100%, 860px);
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .card::before {
+  .main-card::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 10% 22%, rgba(109,79,196,0.14), transparent 28%),
-      radial-gradient(circle at 16% 86%, rgba(217,165,33,0.13), transparent 26%),
-      radial-gradient(circle at 92% 88%, rgba(109,79,196,0.08), transparent 40%);
-    pointer-events: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--line-bright) 20%, transparent 100%);
   }
 
-  .header {
-    text-align: center;
-    padding: 48px 40px 10px;
+  .content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: min(100%, 760px);
+    margin: 0 auto;
   }
 
-  .header h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(2.4rem, 6vw, 3.6rem);
-    color: var(--crimson);
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.08);
-    line-height: 1.08;
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.03;
+    color: #f7f7f2;
+    margin-bottom: 1.6rem;
+  }
+
+  .lead {
+    color: rgba(226, 235, 245, 0.82);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: clamp(0.95rem, 1.6vw, 1.03rem);
   }
 
   .identity {
-    margin: 20px 36px 12px;
-    padding: 18px 24px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 18px;
-    background: rgba(255,255,255,0.86);
-    border: 1px solid rgba(109,79,196,0.16);
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(109,79,196,0.12);
-    position: relative;
-    z-index: 1;
-  }
-
-  .photo-wrap {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    position: relative;
-    z-index: 1;
+    gap: 0.9rem;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(140, 171, 206, 0.3);
+    border-radius: 13px;
+    background: rgba(3, 8, 13, 0.5);
+    margin-bottom: 0.85rem;
+    width: 100%;
   }
 
   .photo {
-    width: 104px;
-    height: 104px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #fff;
-    box-shadow: 0 12px 26px rgba(45,33,80,0.20);
-    background: linear-gradient(135deg, var(--purple), var(--purple-bright));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 2.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: radial-gradient(circle at 20% 20%, rgba(255, 193, 104, 0.34), transparent 48%), #102236;
+    color: #f7fafc;
+    display: grid;
+    place-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
     font-weight: 700;
-    font-family: 'Cormorant Garamond', serif;
-  }
-
-  .identity-copy {
-    text-align: left;
+    flex-shrink: 0;
   }
 
   .name {
-    text-align: left;
-    font-size: 1.35rem;
+    font-size: 1.12rem;
     font-weight: 700;
-    color: var(--ink);
-    letter-spacing: 0.2px;
-    margin-top: 0;
-    position: relative;
-    z-index: 1;
+    color: #f6f6f0;
+    margin-bottom: 0.2rem;
   }
 
   .role {
-    text-align: left;
-    font-size: 0.9rem;
-    color: var(--purple);
-    letter-spacing: 0.8px;
-    margin-top: 4px;
-    margin-bottom: 0;
-    font-weight: 600;
-    position: relative;
-    z-index: 1;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(162, 205, 226, 0.8);
   }
 
   .statement {
-    margin: 20px 36px 8px;
-    padding: 30px 32px;
-    background: rgba(255,255,255,0.68);
-    border: 1px solid rgba(109,79,196,0.18);
-    border-radius: 18px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.15rem, 2.8vw, 1.4rem);
-    color: var(--ink);
-    position: relative;
-    z-index: 1;
-    line-height: 1.75;
+    display: grid;
+    gap: 1.45rem;
+    color: rgba(226, 235, 245, 0.86);
+    line-height: 1.72;
+    font-size: 0.99rem;
   }
 
-  .statement p { margin-bottom: 16px; }
-  .statement p:last-child { margin-bottom: 0; }
   .statement strong {
-    color: var(--purple);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.82em;
-    letter-spacing: 0.5px;
-  }
-  .statement em {
-    font-style: italic;
-  }
-
-  .env-band {
-    margin: 0 36px 40px;
-    padding: 22px 26px;
-    background: linear-gradient(135deg, var(--purple), var(--purple-bright));
-    border-radius: 18px;
-    color: #fff;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 12px 30px rgba(109,79,196,0.35);
-  }
-  .env-band h3 {
-    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.85;
-    margin-bottom: 10px;
-  }
-  .env-tags {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
-  }
-  .env-tag {
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.35);
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-  .env-tag .star { color: var(--gold-soft); }
-  .env-band p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.08rem;
-    font-style: italic;
-    line-height: 1.6;
-    opacity: 0.96;
+    font-size: 0.78em;
   }
 
-  @media (max-width: 560px) {
-    .content-shell { width: 100%; }
-    .identity, .statement, .env-band { margin-left: 18px; margin-right: 18px; }
-    .header { padding: 36px 24px 6px; }
-    .identity {
-      flex-direction: column;
-      gap: 14px;
-      padding: 18px;
-    }
-    .identity-copy, .name, .role { text-align: center; }
-    .photo {
-      width: 92px;
-      height: 92px;
-      font-size: 1.95rem;
-    }
-    .tree-bg {
-      left: -26px;
-      bottom: -18px;
-      width: min(248px, 52%);
-      height: 68%;
-    }
-  }
-
-  /* Chestnut to oak watermark animation */
   .tree-bg {
-    --tree-stroke: 8;
-    position: absolute;
-    left: -42px;
-    bottom: -34px;
-    width: clamp(250px, 22vw, 360px);
-    height: 84%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0;
-    color: var(--purple);
-    filter: drop-shadow(0 18px 40px rgba(109,79,196,0.18));
-    animation: tree-cycle 14s ease-in-out infinite;
+    width: min(100%, 320px);
+    height: auto;
+    color: var(--tree);
+    filter: drop-shadow(0 0 24px rgba(126, 228, 207, 0.24));
   }
 
-  @keyframes tree-cycle {
-    0%, 100% { opacity: 0; }
-    9%, 88%  { opacity: 0.28; }
-    94%      { opacity: 0.08; }
+  .tree-corner {
+    position: absolute;
+    left: -18px;
+    bottom: -20px;
+    opacity: 0.86;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .tree-bg .ground {
-    fill: rgba(109,79,196,0.10);
+    fill: rgba(126, 228, 207, 0.2);
     transform-origin: center;
-    animation: ground-breathe 14s ease-in-out infinite;
-  }
-
-  @keyframes ground-breathe {
-    0%, 14% { transform: scale(0.72); opacity: 0; }
-    26%, 88% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(0.9); opacity: 0; }
-  }
-
-  .tree-bg .oak-sway {
-    transform-origin: 112px 456px;
+    animation: ground-rise 12s ease-in-out infinite;
   }
 
   .tree-bg .acorn {
     transform-box: fill-box;
     transform-origin: center bottom;
-    animation: acorn-ready 14s ease-in-out infinite;
+    animation: acorn-pulse 12s ease-in-out infinite;
   }
 
   .tree-bg .acorn-cap,
@@ -297,59 +224,27 @@
     fill: currentColor;
   }
 
-  @keyframes acorn-ready {
-    0%   { transform: translateY(18px) scale(0); opacity: 0; }
-    8%   { transform: translateY(0) scale(1.06); opacity: 1; }
-    15%  { transform: translateY(0) scale(1); opacity: 1; }
-    22%  { transform: translateY(-2px) scale(0.98); opacity: 1; }
-    100% { transform: translateY(-2px) scale(0.98); opacity: 1; }
-  }
-
   .tree-bg .trunk,
   .tree-bg .branch {
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
+    stroke-width: 7;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
   }
 
   .tree-bg .trunk {
-    stroke-width: var(--tree-stroke);
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: grow-trunk 14s cubic-bezier(0.25, 0.75, 0.25, 1) infinite;
-  }
-
-  @keyframes grow-trunk {
-    0%, 16% { stroke-dashoffset: 100; opacity: 0; }
-    56% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; }
-  }
-
-  .tree-bg .branch {
-    stroke-width: var(--tree-stroke);
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
+    animation: trunk-grow 12s cubic-bezier(0.28, 0.72, 0.24, 1) infinite;
   }
 
   .tree-bg .branch-low {
-    animation: grow-branch-low 14s ease-in-out infinite;
+    animation: branch-low 12s ease-in-out infinite;
   }
 
   .tree-bg .branch-high {
-    animation: grow-branch-high 14s ease-in-out infinite;
-  }
-
-  @keyframes grow-branch-low {
-    0%, 22% { stroke-dashoffset: 100; opacity: 0; }
-    58% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 1; }
-  }
-
-  @keyframes grow-branch-high {
-    0%, 24% { stroke-dashoffset: 100; opacity: 0; }
-    60% { stroke-dashoffset: 0; opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 1; }
+    animation: branch-high 12s ease-in-out infinite;
   }
 
   .tree-bg .canopy {
@@ -359,158 +254,279 @@
 
   .tree-bg .canopy-back {
     opacity: 0;
-    transform: scale(0.18);
-    animation: bloom-back 14s ease-in-out infinite;
+    transform: scale(0.1);
+    animation: canopy-back 12s ease-in-out infinite;
   }
 
   .tree-bg .canopy-front {
     opacity: 0;
-    transform: scale(0.12);
-    animation: bloom-front 14s ease-in-out infinite;
-  }
-
-  @keyframes bloom-back {
-    0%, 60% { transform: scale(0.18); opacity: 0; }
-    80% { transform: scale(1.06); opacity: 0.95; }
-    90%, 100% { transform: scale(1); opacity: 0.95; }
-  }
-
-  @keyframes bloom-front {
-    0%, 64% { transform: scale(0.12); opacity: 0; }
-    84% { transform: scale(1.08); opacity: 1; }
-    92%, 100% { transform: scale(1); opacity: 1; }
+    transform: scale(0.08);
+    animation: canopy-front 12s ease-in-out infinite;
   }
 
   .tree-bg .leaf-flare {
-    fill: var(--gold-soft);
+    fill: var(--tree-flares);
+    opacity: 0;
     transform-box: fill-box;
     transform-origin: center;
-    opacity: 0;
-    animation: leaf-flare 14s ease-in-out infinite;
+    animation: leaves-pop 12s ease-in-out infinite;
   }
 
-  @keyframes leaf-flare {
-    0%, 66% { opacity: 0; transform: scale(0.2); }
-    76% { opacity: 0.85; transform: scale(1.15); }
-    88% { opacity: 0.35; transform: scale(0.92); }
-    100% { opacity: 0.35; transform: scale(0.92); }
+  @keyframes ground-rise {
+    0%, 18% {
+      transform: scale(0.72);
+      opacity: 0;
+    }
+    34%, 86% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.92);
+      opacity: 0;
+    }
   }
 
-  /* respect users who prefer no motion: show the grown oak, static */
+  @keyframes acorn-pulse {
+    0% {
+      transform: translateY(22px) scale(0);
+      opacity: 0;
+    }
+    11% {
+      transform: translateY(0) scale(1.05);
+      opacity: 1;
+    }
+    18% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    26% {
+      transform: translateY(-2px) scale(0.98);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-2px) scale(0.98);
+      opacity: 1;
+    }
+  }
+
+  @keyframes trunk-grow {
+    0%, 20% {
+      stroke-dashoffset: 100;
+      opacity: 0;
+    }
+    56% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes branch-low {
+    0%, 28% {
+      stroke-dashoffset: 100;
+      opacity: 0;
+    }
+    62% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes branch-high {
+    0%, 32% {
+      stroke-dashoffset: 100;
+      opacity: 0;
+    }
+    66% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes canopy-back {
+    0%, 60% {
+      opacity: 0;
+      transform: scale(0.1);
+    }
+    80% {
+      opacity: 0.94;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0.94;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes canopy-front {
+    0%, 64% {
+      opacity: 0;
+      transform: scale(0.08);
+    }
+    84% {
+      opacity: 1;
+      transform: scale(1.07);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes leaves-pop {
+    0%, 68% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+    78% {
+      opacity: 0.86;
+      transform: scale(1.16);
+    }
+    100% {
+      opacity: 0.4;
+      transform: scale(0.92);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .shell {
+      width: min(1200px, 100% - 1rem);
+      padding-inline: 0.35rem;
+    }
+
+    .identity {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .main-card {
+      min-height: 66vh;
+      padding-bottom: clamp(6.3rem, 28vw, 7.8rem);
+    }
+
+    .tree-bg {
+      width: min(76vw, 290px);
+    }
+
+    .tree-corner {
+      left: -30px;
+      bottom: -30px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .card { transition: none; }
-    .tree-bg { animation: none; opacity: 0.28; }
-    .tree-bg .ground { animation: none; transform: scale(1); opacity: 1; }
-    .tree-bg .acorn { animation: none; transform: translateY(-2px) scale(0.98); opacity: 1; }
+    .tree-bg .ground,
+    .tree-bg .acorn,
     .tree-bg .trunk,
-    .tree-bg .branch { animation: none; stroke-dashoffset: 0; opacity: 1; }
+    .tree-bg .branch,
     .tree-bg .canopy-back,
-    .tree-bg .canopy-front { animation: none; transform: scale(1); opacity: 1; }
-    .tree-bg .leaf-flare { animation: none; opacity: 0.35; transform: scale(0.92); }
+    .tree-bg .canopy-front,
+    .tree-bg .leaf-flare {
+      animation: none;
+    }
+
+    .tree-bg .ground {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .tree-bg .acorn {
+      opacity: 1;
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    .tree-bg .trunk,
+    .tree-bg .branch {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+
+    .tree-bg .canopy-back,
+    .tree-bg .canopy-front {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .tree-bg .leaf-flare {
+      opacity: 0.4;
+      transform: scale(0.92);
+    }
   }
 </style>
 </head>
 <body>
-  <main class="card">
-    <svg class="tree-bg" viewBox="0 0 420 520" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
-      <ellipse class="ground" cx="120" cy="476" rx="92" ry="22"/>
-      <g class="oak-sway">
-        <g class="acorn">
-          <path class="acorn-cap" d="M72 432 q22 -15 44 0 q-4 11 -22 11 q-18 0 -22 -11 z"/>
-          <ellipse class="acorn-body" cx="94" cy="454" rx="17" ry="21"/>
-        </g>
-        <path class="trunk" pathLength="100" d="M95 432 C101 392 108 352 116 310 C124 264 132 216 140 160"/>
-        <path class="branch branch-low" pathLength="100" d="M116 304 C101 284 85 264 66 242"/>
-        <g class="canopy canopy-back">
-          <ellipse cx="148" cy="150" rx="54" ry="46"/>
-          <ellipse cx="112" cy="178" rx="44" ry="38"/>
-          <ellipse cx="186" cy="182" rx="40" ry="34"/>
-        </g>
-        <g class="canopy canopy-front">
-          <circle cx="166" cy="134" r="52"/>
-          <circle cx="122" cy="126" r="44"/>
-          <circle cx="194" cy="154" r="40"/>
-          <circle cx="152" cy="194" r="40"/>
-          <circle cx="206" cy="194" r="30"/>
-        </g>
-        <path class="branch branch-high" pathLength="100" d="M125 256 C145 248 167 244 192 242"/>
-        <g class="leaf-flare">
-          <circle cx="120" cy="96" r="7"/>
-          <circle cx="170" cy="92" r="8"/>
-          <circle cx="220" cy="150" r="6"/>
-          <circle cx="106" cy="204" r="6"/>
-          <circle cx="190" cy="224" r="7"/>
-        </g>
-      </g>
-    </svg>
-    <div class="content-shell">
-      <div class="header">
-        <h1>Work I'd Most Love to Do</h1>
+  <main class="shell">
+    <p class="top-title">My Calling Card</p>
+
+    <article class="main-card">
+      <div class="content">
+        <h1>Work I'd Most Love To Do</h1>
+        <p class="lead">
+          Design systems, culture, and operating structures that help capable people become high-performing teams and help bold ideas grow into durable engines of impact.
+        </p>
+
+        <section class="identity">
+          <div class="photo" aria-hidden="true">NC</div>
+          <div>
+            <p class="name">Neerugatti Chatterji</p>
+            <p class="role">Lead Data Science Engineer | Straive</p>
+          </div>
+        </section>
+
+        <div class="statement">
+          <p>
+            This work fits me because it draws on my <strong>Gift</strong> for shaping environments, my <strong>Passion</strong> for entrepreneurship and understanding how people and systems work, and my <strong>Values</strong> of ownership, analytical rigor, bold ambition, and collaborative trust.
+          </p>
+          <p>
+            I am at my best when strategy and execution are fused: where clarity, accountability, and curiosity turn potential into momentum.
+          </p>
+        </div>
       </div>
 
-      <section class="identity">
-        <div class="photo-wrap">
-          <!-- Replace the div below with: <img class="photo" src="me.jpg" alt="photo"> -->
-          <div class="photo">NC</div>
-        </div>
-        <div class="identity-copy">
-          <div class="name">Neerugatti Chatterji</div>
-          <div class="role">Lead Data Science Engineer &middot; Straive</div>
-        </div>
-      </section>
-
-      <section class="statement">
-        <p>
-          I most want to design the systems, culture, and operating structures that help capable people become high-performing teams and help bold ideas grow into durable engines of impact.
-        </p>
-        <p>
-          That work fits me because it draws on my <strong><em>Gift</em></strong> for shaping environments, my <strong><em>Passion</em></strong> for entrepreneurship and understanding how people and systems work, and my <strong><em>Values</em></strong> of ownership, analytical rigor, bold ambition, and collaborative trust.
-        </p>
-      </section>
-      <section class="env-band">
-        <h3>My Environments</h3>
-        <div class="env-tags">
-          <span class="env-tag"><span class="star">&#9733;</span> Enterprising</span>
-          <span class="env-tag"><span class="star">&#9733;</span> Investigative</span>
-        </div>
-        <p>
-          I'm energized by environments that pair ambition with rigor: places where ownership matters, curiosity is valued, and thoughtful analysis turns bold ideas into practical momentum.
-        </p>
-      </section>
-    </div>
+      <svg class="tree-bg tree-corner" viewBox="0 0 420 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <ellipse class="ground" cx="120" cy="476" rx="92" ry="22"/>
+        <g>
+          <g class="acorn">
+            <path class="acorn-cap" d="M72 432 q22 -15 44 0 q-4 11 -22 11 q-18 0 -22 -11 z"/>
+            <ellipse class="acorn-body" cx="94" cy="454" rx="17" ry="21"/>
+          </g>
+          <path class="trunk" pathLength="100" d="M95 432 C101 392 108 352 116 310 C124 264 132 216 140 160"/>
+          <path class="branch branch-low" pathLength="100" d="M116 304 C101 284 85 264 66 242"/>
+          <g class="canopy canopy-back">
+            <ellipse cx="148" cy="150" rx="54" ry="46"/>
+            <ellipse cx="112" cy="178" rx="44" ry="38"/>
+            <ellipse cx="186" cy="182" rx="40" ry="34"/>
+          </g>
+          <g class="canopy canopy-front">
+            <circle cx="166" cy="134" r="52"/>
+            <circle cx="122" cy="126" r="44"/>
+            <circle cx="194" cy="154" r="40"/>
+            <circle cx="152" cy="194" r="40"/>
+            <circle cx="206" cy="194" r="30"/>
+          </g>
+          <path class="branch branch-high" pathLength="100" d="M125 256 C145 248 167 244 192 242"/>
+          <g class="leaf-flare">
+            <circle cx="120" cy="96" r="7"/>
+            <circle cx="170" cy="92" r="8"/>
+            <circle cx="220" cy="150" r="6"/>
+            <circle cx="106" cy="204" r="6"/>
+            <circle cx="190" cy="224" r="7"/>
+          </g>
+        </g>
+      </svg>
+    </article>
   </main>
-  <script>
-    (function () {
-      const card = document.querySelector('.card');
-      if (!card) return;
-
-      function fitCardToViewport() {
-        card.style.setProperty('--card-scale', '1');
-
-        const styles = getComputedStyle(document.body);
-        const availableWidth = window.innerWidth
-          - parseFloat(styles.paddingLeft)
-          - parseFloat(styles.paddingRight);
-        const availableHeight = window.innerHeight
-          - parseFloat(styles.paddingTop)
-          - parseFloat(styles.paddingBottom);
-
-        const widthScale = availableWidth / card.offsetWidth;
-        const heightScale = availableHeight / card.offsetHeight;
-        const scale = Math.min(1, widthScale, heightScale);
-
-        card.style.setProperty('--card-scale', scale.toFixed(4));
-      }
-
-      const requestFit = () => requestAnimationFrame(fitCardToViewport);
-
-      requestFit();
-      window.addEventListener('resize', requestFit);
-
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(requestFit);
-      }
-    })();
-  </script>
 </body>
 </html>
